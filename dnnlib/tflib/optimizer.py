@@ -20,12 +20,12 @@ from .. import util
 
 from .tfutil import TfExpression, TfExpressionEx
 
-try:
-    # TensorFlow 1.13
-    from tensorflow.python.ops import nccl_ops
-except:
-    # Older TensorFlow versions
-    # import tensorflow.contrib.nccl as nccl_ops
+# try:
+#     # TensorFlow 1.13
+#     from tensorflow.python.ops import nccl_ops
+# except:
+#     # Older TensorFlow versions
+#     # import tensorflow.contrib.nccl as nccl_ops
 
 
 _collective_ops_warning_printed = False
@@ -46,7 +46,7 @@ class Optimizer:
 
     def __init__(self,
         name:                   str             = "Train",                  # Name string that will appear in TensorFlow graph.
-        tf_optimizer:           str             = "tf.train.AdamOptimizer", # Underlying optimizer class.
+        tf_optimizer:           str             = "tf.compat.v1.train.AdamOptimizer", # Underlying optimizer class.
         learning_rate:          TfExpressionEx  = 0.001,                    # Learning rate. Can vary over time.
         minibatch_multiplier:   TfExpressionEx  = None,                     # Treat N consecutive minibatches as one by accumulating gradients.
         share:                  "Optimizer"     = None,                     # Share internal state with a previously created optimizer?

@@ -1,4 +1,6 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tensorflow
+tf = tensorflow
+tf.disable_v2_behavior()
 import sys, getopt, os
 
 import numpy as np

@@ -8,7 +8,9 @@
 import warnings
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=DeprecationWarning)
-import tensorflow as tf
+import tensorflow.compat.v1 as tensorflow
+tf = tensorflow
+tf.disable_v2_behavior()
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 import dnnlib
 import dnnlib.tflib as tflib
